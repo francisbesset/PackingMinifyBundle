@@ -2,7 +2,7 @@ DynamicsBundle, Enhanced Stylesheets and Javascripts for Symfony2
 =================================================================
 
 DynamicsBundle merge your stylesheets files and javascripts files.
-The files merging can be minify.
+The files merged can be minify.
 
 ## Installation
 
