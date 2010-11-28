@@ -38,11 +38,11 @@ The files merging can be minify.
         resource: DynamicsBundle/Resources/config/routing/dynamics.xml
         prefix:   /_dynamics
 
-### Use
+## Use
 
 To use DynamicsBundle, call the normal method to add a stylesheet or javascript.
 
-#### Twig
+### Twig
 
     {% javascript 'js/jquery/jquery.js' %}
     {% javascript 'js/main.js' %}
@@ -52,7 +52,7 @@ To use DynamicsBundle, call the normal method to add a stylesheet or javascript.
     {% javascripts %}
     {% stylesheets %}
 
-#### PHP
+### PHP
 
     <?php $view['javascripts']->add('js/jquery/jquery.js') ?>
     <?php $view['javascripts']->add('js/main.js') ?>
