@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\DynamicsBundle\Templating\Helper;
+namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
-use Bundle\DynamicsBundle\Templating\Resource\FileResource;
+use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
 class JavascriptsHelper extends BaseJavascriptsHelper
 {
@@ -24,8 +24,8 @@ class JavascriptsHelper extends BaseJavascriptsHelper
             'cache_dir'                  => null,
             'debug'                      => false,
             'minify'                     => false,
-            'javascripts_dumper_class'   => 'Bundle\\DynamicsBundle\\Templating\\Dumper\\JavascriptsDumper',
-            'javascripts_minifier_class' => 'Bundle\\DynamicsBundle\\Templating\\Minifier\\JavascriptsMinifier',
+            'javascripts_dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\JavascriptsDumper',
+            'javascripts_minifier_class' => 'Bundle\\PackingMinifyBundle\\Templating\\Minifier\\JavascriptsMinifier',
         );
 
         // check option names
@@ -87,7 +87,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
             }
 
             $this->reset();
-            $html .= $this->getHtml($this->assetHelper->generate('_dynamics_get', array(
+            $html .= $this->getHtml($this->assetHelper->generate('_pm_get', array(
                 'file' => $md5,
                 '_format' => 'js',
             )));
@@ -99,7 +99,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
     public function setCache($cache)
     {
         if (!$cache) {
-            throw new \InvalidArgumentException('The option \'cache_dir\' is required for DynamicsBundle.');
+            throw new \InvalidArgumentException('The option \'cache_dir\' is required for PackingMinifyBundle.');
         }
 
         if (!is_dir($cache)) {

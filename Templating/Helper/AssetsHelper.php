@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\DynamicsBundle\Templating\Helper;
+namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper as BaseAssetsHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\RouterHelper;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\DynamicsBundle\Templating\Dumper;
+namespace Bundle\PackingMinifyBundle\Templating\Dumper;
 
 class JavascriptsDumper
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Bundle\DynamicsBundle\DependencyInjection;
+namespace Bundle\PackingMinifyBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-class DynamicsExtension extends Extension
+class PackingMinifyExtension extends Extension
 {
     /**
-     * Loads the I18nRouting configuration.
+     * Loads the PackingMinify configuration.
      *
      * @param array            $config    An array of configuration settings
      * @param ContainerBuilder $container A ContainerBuilder instance
@@ -22,7 +22,7 @@ class DynamicsExtension extends Extension
     protected function registerMergeConfiguration($config, $container)
     {
         $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config/schema');
-        $loader->load('dynamics.xml');
+        $loader->load('packing_minify.xml');
 
         $container->setParameter('templating.options.javascripts.minify', isset($config['js']['minify']) ? $config['js']['minify'] : true);
         $container->setParameter('templating.options.stylesheets.minify', isset($config['css']['minify']) ? $config['css']['minify'] : true);
@@ -45,7 +45,7 @@ class DynamicsExtension extends Extension
      */
     public function getNamespace()
     {
-        return 'http://www.apercite.fr/schema/dic/DynamicsBundle';
+        return 'http://www.apercite.fr/schema/dic/PackingMinifyBundle';
     }
 
     /**
@@ -57,6 +57,6 @@ class DynamicsExtension extends Extension
      */
     public function getAlias()
     {
-        return 'dynamics';
+        return 'packingMinify';
     }
 }

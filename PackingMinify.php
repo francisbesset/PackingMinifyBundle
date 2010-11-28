@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\DynamicsBundle;
+namespace Bundle\PackingMinifyBundle;
 
-class Dynamics
+class PackingMinify
 {
     protected $cacheDir;
 

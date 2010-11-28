@@ -1,9 +1,9 @@
 <?php
 
-namespace Bundle\DynamicsBundle\Templating\Helper;
+namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\StylesheetsHelper as BaseStylesheetsHelper;
-use Bundle\DynamicsBundle\Templating\Resource\FileResource;
+use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
 class StylesheetsHelper extends BaseStylesheetsHelper
 {
@@ -24,8 +24,8 @@ class StylesheetsHelper extends BaseStylesheetsHelper
             'cache_dir'                  => null,
             'debug'                      => false,
             'minify'                     => true,
-            'stylesheets_dumper_class'   => 'Bundle\\DynamicsBundle\\Templating\\Dumper\\StylesheetsDumper',
-            'stylesheets_minifier_class' => 'Bundle\\DynamicsBundle\\Templating\\Minifier\\StylesheetsMinifier',
+            'stylesheets_dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\StylesheetsDumper',
+            'stylesheets_minifier_class' => 'Bundle\\PackingMinifyBundle\\Templating\\Minifier\\StylesheetsMinifier',
         );
 
         // check option names
@@ -87,7 +87,7 @@ class StylesheetsHelper extends BaseStylesheetsHelper
             }
 
             $this->reset();
-            $html .= $this->getHtml($this->assetHelper->generate('_dynamics_get', array(
+            $html .= $this->getHtml($this->assetHelper->generate('_pm_get', array(
                 'file' => $md5,
                 '_format' => 'css',
             )));
@@ -99,7 +99,7 @@ class StylesheetsHelper extends BaseStylesheetsHelper
     public function setCache($cache)
     {
         if (!$cache) {
-            throw new \InvalidArgumentException('The option \'cache_dir\' is required for DynamicsBundle.');
+            throw new \InvalidArgumentException('The option \'cache_dir\' is required for PackingMinifyBundleBundle.');
         }
 
         if (!is_dir($cache)) {

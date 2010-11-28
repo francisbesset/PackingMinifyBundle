@@ -4,8 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.symfony-project.org/schema/routing http://www.symfony-project.org/schema/routing/routing-1.0.xsd">
 
-    <route id="_dynamics_get" pattern="/:file.:_format">
-        <default key="_controller">DynamicsBundle:Dynamics:get</default>
+    <route id="_pm_get" pattern="/:file.:_format">
+        <default key="_controller">PackingMinifyBundle:PackingMinify:get</default>
         <requirement key="_format">(css|js)</requirement>
     </route>
 </routes>

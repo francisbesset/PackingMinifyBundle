@@ -1,14 +1,14 @@
-DynamicsBundle, Enhanced Stylesheets and Javascripts for Symfony2
+PackingMinifyBundle, Enhanced Stylesheets and Javascripts for Symfony2
 =================================================================
 
-DynamicsBundle merge your stylesheets files and javascripts files.
+PackingMinifyBundle merge your stylesheets files and javascripts files.
 The files merged can be minify.
 
 ## Installation
 
-### Add DynamicsBundle to your src/Bundle dir
+### Add PackingMinifyBundle to your src/Bundle dir
 
-    git submodule add git://github.com/francisbesset/DynamicsBundle.git src/Bundle/DynamicsBundle
+    git submodule add git://github.com/francisbesset/PackingMinifyBundle.git src/Bundle/PackingMinifyBundle
 
 ### Add I18nRoutingBundle to your application kernel
 
@@ -17,7 +17,7 @@ The files merged can be minify.
     {
         return array(
             // ...
-            new Bundle\DynamicsBundle\DynamicsBundle(),
+            new Bundle\PackingMinifyBundle\PackingMinifyBundle(),
             // ...
         );
     }
@@ -27,20 +27,20 @@ The files merged can be minify.
 #### Add config
 
     // app/config/config.yml
-    dynamics.config:
+    packingMinify.config:
         css: { minify: true }
         js:  { minify: true }
 
 #### Add routing
 
     // app/config/routing.yml
-    _dynamics:
-        resource: DynamicsBundle/Resources/config/routing/dynamics.xml
-        prefix:   /_dynamics
+    _packing_minify:
+        resource: PackingMinifyBundle/Resources/config/routing/packing_minify.xml
+        prefix:   /_pm
 
 ## Use
 
-To use DynamicsBundle, call the normal method to add a stylesheet or javascript.
+To use PackingMinifyBundle, call the classic method to add a stylesheet or javascript.
 
 ### Twig
 

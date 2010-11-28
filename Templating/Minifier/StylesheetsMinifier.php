@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\DynamicsBundle\Templating\Minifier;
+namespace Bundle\PackingMinifyBundle\Templating\Minifier;
 
 class StylesheetsMinifier
 {

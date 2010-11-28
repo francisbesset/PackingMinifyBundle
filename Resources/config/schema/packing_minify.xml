@@ -5,14 +5,14 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="dynamics">Bundle\DynamicsBundle\Dynamics</parameter>
-        <parameter key="templating.helper.javascripts.class">Bundle\DynamicsBundle\Templating\Helper\JavascriptsHelper</parameter>
-        <parameter key="templating.helper.stylesheets.class">Bundle\DynamicsBundle\Templating\Helper\StylesheetsHelper</parameter>
-        <parameter key="templating.helper.assets.class">Bundle\DynamicsBundle\Templating\Helper\AssetsHelper</parameter>
-        <parameter key="templating.options.stylesheets_dumper_class">Bundle\DynamicsBundle\Templating\Dumper\StylesheetsDumper</parameter>
-        <parameter key="templating.options.javascripts_dumper_class">Bundle\DynamicsBundle\Templating\Dumper\JavascriptsDumper</parameter>
-        <parameter key="templating.options.stylesheets_minifier_class">Bundle\DynamicsBundle\Templating\Minifier\StylesheetsMinifier</parameter>
-        <parameter key="templating.options.javascripts_minifier_class">Bundle\DynamicsBundle\Templating\Minifier\JavascriptsMinifier</parameter>
+        <parameter key="packing_minify">Bundle\PackingMinifyBundle\PackingMinify</parameter>
+        <parameter key="templating.helper.javascripts.class">Bundle\PackingMinifyBundle\Templating\Helper\JavascriptsHelper</parameter>
+        <parameter key="templating.helper.stylesheets.class">Bundle\PackingMinifyBundle\Templating\Helper\StylesheetsHelper</parameter>
+        <parameter key="templating.helper.assets.class">Bundle\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
+        <parameter key="templating.options.stylesheets_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\StylesheetsDumper</parameter>
+        <parameter key="templating.options.javascripts_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\JavascriptsDumper</parameter>
+        <parameter key="templating.options.stylesheets_minifier_class">Bundle\PackingMinifyBundle\Templating\Minifier\StylesheetsMinifier</parameter>
+        <parameter key="templating.options.javascripts_minifier_class">Bundle\PackingMinifyBundle\Templating\Minifier\JavascriptsMinifier</parameter>
     </parameters>
 
     <services>
@@ -20,7 +20,7 @@
             <tag name="templating.helper" alias="javascripts" />
             <argument type="service" id="templating.helper.assets" />
             <argument type="collection">
-                <argument key="cache_dir">%kernel.cache_dir%/dynamics</argument>
+                <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
                 <argument key="debug">%kernel.debug%</argument>
                 <argument key="minify">%templating.options.javascripts.minify%</argument>
                 <argument key="javascripts_dumper_class">%templating.options.javascripts_dumper_class%</argument>
@@ -32,7 +32,7 @@
             <tag name="templating.helper" alias="stylesheets" />
             <argument type="service" id="templating.helper.assets" />
             <argument type="collection">
-                <argument key="cache_dir">%kernel.cache_dir%/dynamics</argument>
+                <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
                 <argument key="debug">%kernel.debug%</argument>
                 <argument key="minify">%templating.options.stylesheets.minify%</argument>
                 <argument key="stylesheets_dumper_class">%templating.options.stylesheets_dumper_class%</argument>
@@ -48,8 +48,8 @@
             <argument>%templating.assets.version%</argument>
         </service>
 
-        <service id="dynamics" class="%dynamics%">
-            <argument key="cache_dir">%kernel.cache_dir%/dynamics</argument>
+        <service id="packing_minify" class="%packing_minify%">
+            <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
         </service>
     </services>
 </container>
