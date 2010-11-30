@@ -8,35 +8,36 @@
         <parameter key="packing_minify">Bundle\PackingMinifyBundle\PackingMinify</parameter>
         <parameter key="templating.helper.javascripts.class">Bundle\PackingMinifyBundle\Templating\Helper\JavascriptsHelper</parameter>
         <parameter key="templating.helper.stylesheets.class">Bundle\PackingMinifyBundle\Templating\Helper\StylesheetsHelper</parameter>
+        <parameter key="templating.minifier.stylesheets.basic.class">Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets\Basic</parameter>
+        <parameter key="templating.minifier.javascripts.jsmin.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\JSMin</parameter>
+        <parameter key="templating.minifier.javascripts.packer.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\Packer</parameter>
         <parameter key="templating.helper.assets.class">Bundle\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
         <parameter key="templating.options.stylesheets_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\StylesheetsDumper</parameter>
         <parameter key="templating.options.javascripts_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\JavascriptsDumper</parameter>
-        <parameter key="templating.options.stylesheets_minifier_class">Bundle\PackingMinifyBundle\Templating\Minifier\StylesheetsMinifier</parameter>
-        <parameter key="templating.options.javascripts_minifier_class">Bundle\PackingMinifyBundle\Templating\Minifier\JavascriptsMinifier</parameter>
     </parameters>
 
     <services>
         <service id="templating.helper.javascripts" class="%templating.helper.javascripts.class%">
             <tag name="templating.helper" alias="javascripts" />
             <argument type="service" id="templating.helper.assets" />
+            <argument type="service" id="templating.minifier.javascripts" />
             <argument type="collection">
                 <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
                 <argument key="debug">%kernel.debug%</argument>
                 <argument key="minify">%templating.options.javascripts.minify%</argument>
-                <argument key="javascripts_dumper_class">%templating.options.javascripts_dumper_class%</argument>
-                <argument key="javascripts_minifier_class">%templating.options.javascripts_minifier_class%</argument>
+                <argument key="dumper_class">%templating.options.javascripts_dumper_class%</argument>
             </argument>
         </service>
 
         <service id="templating.helper.stylesheets" class="%templating.helper.stylesheets.class%">
             <tag name="templating.helper" alias="stylesheets" />
             <argument type="service" id="templating.helper.assets" />
+            <argument type="service" id="templating.minifier.stylesheets" />
             <argument type="collection">
                 <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
                 <argument key="debug">%kernel.debug%</argument>
                 <argument key="minify">%templating.options.stylesheets.minify%</argument>
-                <argument key="stylesheets_dumper_class">%templating.options.stylesheets_dumper_class%</argument>
-                <argument key="stylesheets_minifier_class">%templating.options.stylesheets_minifier_class%</argument>
+                <argument key="dumper_class">%templating.options.stylesheets_dumper_class%</argument>
             </argument>
         </service>
 
@@ -51,5 +52,17 @@
         <service id="packing_minify" class="%packing_minify%">
             <argument key="cache_dir">%kernel.cache_dir%/packing_minify</argument>
         </service>
+
+        <service id="templating.minifier.javascripts.packer" class="%templating.minifier.javascripts.packer.class%">
+            <argument>%templating.minifier.javascripts.packer.options%</argument>
+        </service>
+
+        <service id="templating.minifier.javascripts.jsmin" class="%templating.minifier.javascripts.jsmin.class%" />
+
+        <service id="templating.minifier.stylesheets.basic" class="%templating.minifier.stylesheets.basic.class%" />
+
+        <service id="templating.minifier.javascripts" alias="templating.minifier.javascripts.jsmin" />
+
+        <service id="templating.minifier.stylesheets" alias="templating.minifier.stylesheets.basic" />
     </services>
 </container>

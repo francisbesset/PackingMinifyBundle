@@ -3,29 +3,31 @@
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
+use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
 class JavascriptsHelper extends BaseJavascriptsHelper
 {
+    protected $minifier;
     protected $options;
     protected $resources = array();
 
     /**
      * Constructor.
      *
-     * @param AssetsHelper $assetHelper A AssetsHelper instance
-     * @param Array        $options     Options
+     * @param AssetsHelper      $assetHelper A AssetsHelper instance
+     * @param MinifierInterface $minifier    A MinifierInterface instance
+     * @param Array             $options     Options
      */
-    public function __construct(AssetsHelper $assetHelper, array $options = array())
+    public function __construct(AssetsHelper $assetHelper, MinifierInterface $minifier, array $options = array())
     {
         parent::__construct($assetHelper);
 
         $this->options = array(
-            'cache_dir'                  => null,
-            'debug'                      => false,
-            'minify'                     => false,
-            'javascripts_dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\JavascriptsDumper',
-            'javascripts_minifier_class' => 'Bundle\\PackingMinifyBundle\\Templating\\Minifier\\JavascriptsMinifier',
+            'cache_dir'      => null,
+            'debug'          => false,
+            'minify'         => false,
+            'dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\JavascriptsDumper',
         );
 
         // check option names
@@ -34,7 +36,9 @@ class JavascriptsHelper extends BaseJavascriptsHelper
         }
 
         $this->options = array_merge($this->options, $options);
+
         $this->setCache($this->options['cache_dir']);
+        $this->minifier = $minifier;
     }
 
     /**
@@ -72,7 +76,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
             $md5 = md5(implode($this->javascripts));
 
             if ($this->needsReload($md5)) {
-                $dumper = new $this->options['javascripts_dumper_class']($this->javascripts, array(
+                $dumper = new $this->options['dumper_class']($this->javascripts, array(
                     'web_dir'           => $this->assetHelper->getWebPath(),
                     'script_name_uri'   => $this->assetHelper->isScriptNameInUri()
                 ));
@@ -80,7 +84,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
                 $dump = $dumper->dump();
 
                 if ($this->options['minify']) {
-                    $dump = call_user_func($this->options['javascripts_minifier_class'].'::minify', $dump);
+                    $dump = $this->minifier->minify($dump);
                 }
 
                 $this->updateCache($md5, $dump);

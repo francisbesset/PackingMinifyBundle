@@ -3,29 +3,31 @@
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\StylesheetsHelper as BaseStylesheetsHelper;
+use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
 class StylesheetsHelper extends BaseStylesheetsHelper
 {
+    protected $minifier;
     protected $options;
     protected $resources = array();
 
     /**
      * Constructor.
      *
-     * @param AssetsHelper $assetHelper A AssetsHelper instance
-     * @param Array        $options     Options
+     * @param AssetsHelper      $assetHelper A AssetsHelper instance
+     * @param MinifierInterface $minifier    A MinifierInterface instance
+     * @param Array             $options     Options
      */
-    public function __construct(AssetsHelper $assetHelper, array $options = array())
+    public function __construct(AssetsHelper $assetHelper, MinifierInterface $minifier, array $options = array())
     {
         parent::__construct($assetHelper);
 
         $this->options = array(
-            'cache_dir'                  => null,
-            'debug'                      => false,
-            'minify'                     => true,
-            'stylesheets_dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\StylesheetsDumper',
-            'stylesheets_minifier_class' => 'Bundle\\PackingMinifyBundle\\Templating\\Minifier\\StylesheetsMinifier',
+            'cache_dir'      => null,
+            'debug'          => false,
+            'minify'         => true,
+            'dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\StylesheetsDumper',
         );
 
         // check option names
@@ -34,7 +36,9 @@ class StylesheetsHelper extends BaseStylesheetsHelper
         }
 
         $this->options = array_merge($this->options, $options);
+
         $this->setCache($this->options['cache_dir']);
+        $this->minifier = $minifier;
     }
 
     /**
@@ -72,7 +76,7 @@ class StylesheetsHelper extends BaseStylesheetsHelper
             $md5 = md5(implode($this->stylesheets));
 
             if ($this->needsReload($md5)) {
-                $dumper = new $this->options['stylesheets_dumper_class']($this->stylesheets, array(
+                $dumper = new $this->options['dumper_class']($this->stylesheets, array(
                     'web_dir'           => $this->assetHelper->getWebPath(),
                     'script_name_uri'   => $this->assetHelper->isScriptNameInUri()
                 ));
@@ -80,7 +84,7 @@ class StylesheetsHelper extends BaseStylesheetsHelper
                 $dump = $dumper->dump();
 
                 if ($this->options['minify']) {
-                    $dump = call_user_func($this->options['stylesheets_minifier_class'].'::minify', $dump);
+                    $dump = $this->minifier->minify($dump);
                 }
 
                 $this->updateCache($md5, $dump);

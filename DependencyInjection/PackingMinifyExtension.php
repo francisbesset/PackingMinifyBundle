@@ -24,8 +24,27 @@ class PackingMinifyExtension extends Extension
         $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config/schema');
         $loader->load('packing_minify.xml');
 
-        $container->setParameter('templating.options.javascripts.minify', isset($config['js']['minify']) ? $config['js']['minify'] : true);
-        $container->setParameter('templating.options.stylesheets.minify', isset($config['css']['minify']) ? $config['css']['minify'] : true);
+        if (isset($config['js']['minify'])) {
+            $container->setParameter('templating.options.javascripts.minify', $config['js']['minify']);
+        }
+
+        if (isset($config['css']['minify'])) {
+            $container->setParameter('templating.options.stylesheets.minify', $config['css']['minify']);
+        }
+
+        if (isset($config['js']['minifier'])) {
+            $config['js']['minifier'] = strtolower($config['js']['minifier']);
+
+            $container->setAlias('templating.minifier.javascripts', 'templating.minifier.javascripts.'.$config['js']['minifier']);
+        }
+
+        if (isset($config['css']['minifier'])) {
+            $container->setAlias('templating.minifier.stylesheets', 'templating.minifier.stylesheets.'.$config['css']['minifier']);
+        }
+
+        if (isset($config['js']['options'])) {
+            $container->setParameter('templating.minifier.javascripts.'.$config['js']['minifier'].'.options', $config['js']['options']);
+        }
     }
 
     /**
