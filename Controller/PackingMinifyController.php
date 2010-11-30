@@ -13,9 +13,9 @@ class PackingMinifyController extends Controller
 
         if (false !== $content = $this->get('packing_minify')->get($file, $format)) {
             if ($format == 'css') {
-                return new Response($content, 200, array('Content-Type' => 'text/'.$format));
+                return $this->createResponse($content, 200, array('Content-Type' => 'text/css'));
             } else {
-                return new Response($content, 200, array('Content-Type' => 'application/x-javascript'));
+                return $this->createResponse($content, 200, array('Content-Type' => 'application/x-javascript'));
             }
         }
 
