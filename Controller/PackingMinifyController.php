@@ -19,6 +19,6 @@ class PackingMinifyController extends Controller
             }
         }
 
-        return new Response(null, 404);
+        return $this->createResponse('', 404);
     }
 }
