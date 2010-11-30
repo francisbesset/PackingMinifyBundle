@@ -10,7 +10,7 @@ The files merged can be minify.
 
     git submodule add git://github.com/francisbesset/PackingMinifyBundle.git src/Bundle/PackingMinifyBundle
 
-### Add I18nRoutingBundle to your application kernel
+### Add PackingMinifyBundle to your application kernel
 
     // app/AppKernel.php
     public function registerBundles()
