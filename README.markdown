@@ -68,22 +68,22 @@ The files merged can be minify.
 
 * **Basic**: Not available option (minifier by default)  
 * **CSSMin**:  
- ** remove-empty-blocks:     Boolean  
- ** remove-empty-rulesets:   Boolean  
- ** remove-last-semicolons:  Boolean  
- ** convert-css3-properties: Boolean  
- ** convert-color-values:    Boolean  
- ** compress-color-values:   Boolean  
- ** compress-unit-values:    Boolean  
- ** emulate-css3-variables:  Boolean  
+ remove-empty-blocks:     Boolean  
+ remove-empty-rulesets:   Boolean  
+ remove-last-semicolons:  Boolean  
+ convert-css3-properties: Boolean  
+ convert-color-values:    Boolean  
+ compress-color-values:   Boolean  
+ compress-unit-values:    Boolean  
+ emulate-css3-variables:  Boolean  
 
 #### Javascripts
 
 * **JSMin**: Not available option (minifier by default)  
 * **Packer**:  
- **  encoding:      None, Numeric, Normal, High ASCII  
- **  fast_decode:   Boolean  
- **  special_chars: Boolean
+ encoding:      None, Numeric, Normal, High ASCII  
+ fast_decode:   Boolean  
+ special_chars: Boolean
 
 ## Use
 
