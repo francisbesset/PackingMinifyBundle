@@ -21,28 +21,35 @@ class PackingMinifyExtension extends Extension
 
     protected function registerMergeConfiguration($config, $container)
     {
-        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config/schema');
-        $loader->load('packing_minify.xml');
+        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
 
-        if (isset($config['js']['minify'])) {
-            $container->setParameter('templating.options.javascripts.minify', $config['js']['minify']);
+        if (!$container->hasDefinition('packing_minify')) {
+            $loader->load('packing_minify.xml');
         }
 
-        if (isset($config['css']['minify'])) {
-            $container->setParameter('templating.options.stylesheets.minify', $config['css']['minify']);
+        if (!isset($config['js']['minify'])) {
+            $config['js']['minify'] = true;
         }
+        $container->setParameter('templating.options.javascripts.minify', $config['js']['minify']);
+
+        if (!isset($config['css']['minify'])) {
+            $config['css']['minify'] = true;
+        }
+        $container->setParameter('templating.options.stylesheets.minify', $config['css']['minify']);
 
         if (isset($config['js']['minifier'])) {
             $config['js']['minifier'] = strtolower($config['js']['minifier']);
-
-            $container->setAlias('templating.minifier.javascripts', 'templating.minifier.javascripts.'.$config['js']['minifier']);
+        } else {
+            $config['js']['minifier'] = 'jsmin';
         }
+        $container->setAlias('templating.minifier.javascripts', 'templating.minifier.javascripts.'.$config['js']['minifier']);
 
         if (isset($config['css']['minifier'])) {
-           $config['css']['minifier'] = strtolower($config['css']['minifier']);
-
-            $container->setAlias('templating.minifier.stylesheets', 'templating.minifier.stylesheets.'.$config['css']['minifier']);
+            $config['css']['minifier'] = strtolower($config['css']['minifier']);
+        } else {
+            $config['css']['minifier'] = 'basic';
         }
+        $container->setAlias('templating.minifier.stylesheets', 'templating.minifier.stylesheets.'.$config['css']['minifier']);
 
         if (isset($config['js']['options'])) {
             $container->setParameter('templating.minifier.javascripts.'.$config['js']['minifier'].'.options', $config['js']['options']);
