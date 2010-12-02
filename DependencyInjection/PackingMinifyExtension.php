@@ -39,11 +39,17 @@ class PackingMinifyExtension extends Extension
         }
 
         if (isset($config['css']['minifier'])) {
+           $config['css']['minifier'] = strtolower($config['css']['minifier']);
+
             $container->setAlias('templating.minifier.stylesheets', 'templating.minifier.stylesheets.'.$config['css']['minifier']);
         }
 
         if (isset($config['js']['options'])) {
             $container->setParameter('templating.minifier.javascripts.'.$config['js']['minifier'].'.options', $config['js']['options']);
+        }
+
+        if (isset($config['css']['options'])) {
+            $container->setParameter('templating.minifier.stylesheets.'.$config['css']['minifier'].'.options', $config['css']['options']);
         }
     }
 

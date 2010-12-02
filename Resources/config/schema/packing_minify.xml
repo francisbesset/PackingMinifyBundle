@@ -9,6 +9,7 @@
         <parameter key="templating.helper.javascripts.class">Bundle\PackingMinifyBundle\Templating\Helper\JavascriptsHelper</parameter>
         <parameter key="templating.helper.stylesheets.class">Bundle\PackingMinifyBundle\Templating\Helper\StylesheetsHelper</parameter>
         <parameter key="templating.minifier.stylesheets.basic.class">Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets\Basic</parameter>
+        <parameter key="templating.minifier.stylesheets.cssmin.class">Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets\CSSMin</parameter>
         <parameter key="templating.minifier.javascripts.jsmin.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\JSMin</parameter>
         <parameter key="templating.minifier.javascripts.packer.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\Packer</parameter>
         <parameter key="templating.helper.assets.class">Bundle\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
@@ -58,6 +59,10 @@
         </service>
 
         <service id="templating.minifier.javascripts.jsmin" class="%templating.minifier.javascripts.jsmin.class%" />
+
+        <service id="templating.minifier.stylesheets.cssmin" class="%templating.minifier.stylesheets.cssmin.class%">
+            <argument>%templating.minifier.stylesheets.cssmin.options%</argument>
+        </service>
 
         <service id="templating.minifier.stylesheets.basic" class="%templating.minifier.stylesheets.basic.class%" />
 
