@@ -2,12 +2,10 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets;
 
-use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
+use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 
-class CSSMin implements MinifierInterface
+class CSSMin extends Minifier
 {
-    protected $options;
-
     /**
      * Constructor.
      *
@@ -15,6 +13,8 @@ class CSSMin implements MinifierInterface
      */
     public function __construct(array $options = array())
     {
+        parent::__construct();
+
         $this->options = array(
             'remove-empty-blocks'     => true,
             'remove-empty-rulesets'   => true,
@@ -36,7 +36,7 @@ class CSSMin implements MinifierInterface
 
     public function minify($content)
     {
-        require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'cssmin'.DIRECTORY_SEPARATOR.'cssmin.php';
+        require_once $this->vendorFolder.DIRECTORY_SEPARATOR.'cssmin'.DIRECTORY_SEPARATOR.'cssmin.php';
 
         return \CSSMin::minify($content, $this->options);
     }

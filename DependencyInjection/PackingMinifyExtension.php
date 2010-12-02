@@ -46,10 +46,14 @@ class PackingMinifyExtension extends Extension
 
         if (isset($config['js']['options'])) {
             $container->setParameter('templating.minifier.javascripts.'.$config['js']['minifier'].'.options', $config['js']['options']);
+        } else {
+            $container->setParameter('templating.minifier.javascripts.'.$config['js']['minifier'].'.options', array());
         }
 
         if (isset($config['css']['options'])) {
             $container->setParameter('templating.minifier.stylesheets.'.$config['css']['minifier'].'.options', $config['css']['options']);
+        } else {
+            $container->setParameter('templating.minifier.stylesheets.'.$config['css']['minifier'].'.options', array());
         }
     }
 

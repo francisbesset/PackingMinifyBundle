@@ -2,9 +2,9 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets;
 
-use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
+use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 
-class Basic implements MinifierInterface
+class Basic extends Minifier
 {
     public function minify($content)
     {

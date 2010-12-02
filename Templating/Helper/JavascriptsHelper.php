@@ -3,7 +3,7 @@
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
-use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
+use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
 class JavascriptsHelper extends BaseJavascriptsHelper
@@ -19,7 +19,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
      * @param MinifierInterface $minifier    A MinifierInterface instance
      * @param Array             $options     Options
      */
-    public function __construct(AssetsHelper $assetHelper, MinifierInterface $minifier, array $options = array())
+    public function __construct(AssetsHelper $assetHelper, Minifier $minifier, array $options = array())
     {
         parent::__construct($assetHelper);
 

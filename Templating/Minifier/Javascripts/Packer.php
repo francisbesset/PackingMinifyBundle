@@ -2,12 +2,10 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts;
 
-use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
+use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 
-class Packer implements MinifierInterface
+class Packer extends Minifier
 {
-    protected $options;
-
     /**
      * Constructor.
      *
@@ -15,6 +13,8 @@ class Packer implements MinifierInterface
      */
     public function __construct(array $options = array())
     {
+        parent::__construct();
+
         $this->options = array(
             'encoding'      => 'Normal',
             'fast_decode'   => true,
@@ -23,7 +23,7 @@ class Packer implements MinifierInterface
         
         // check option names
         if ($diff = array_diff(array_keys($options), array_keys($this->options))) {
-            throw new \InvalidArgumentException(sprintf('Packer      does not support the following options: \'%s\'.', implode('\', \'', $diff)));
+            throw new \InvalidArgumentException(sprintf('Packer does not support the following options: \'%s\'.', implode('\', \'', $diff)));
         }
 
         $this->options = array_merge($this->options, $options);
@@ -31,7 +31,7 @@ class Packer implements MinifierInterface
 
     public function minify($content)
     {
-        require_once __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'packer'.DIRECTORY_SEPARATOR.'class.JavaScriptPacker.php';
+        require_once $this->vendorFolder.DIRECTORY_SEPARATOR.'packer'.DIRECTORY_SEPARATOR.'class.JavaScriptPacker.php';
 
         $packer = new \JavaScriptPacker($content, $this->options['encoding'], $this->options['fast_decode'], $this->options['special_chars']);
 
