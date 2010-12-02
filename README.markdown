@@ -44,7 +44,16 @@ The files merged can be minify.
     packingMinify.config:
         css:
             minify:   true
-            minifier: basic
+            minifier: cssmin
+            options:
+                remove-empty-blocks:     true
+                remove-empty-rulesets:   true
+                remove-last-semicolons:  true
+                convert-css3-properties: false
+                convert-color-values:    false
+                compress-color-values:   false
+                compress-unit-values:    false
+                emulate-css3-variables:  true
         js:
             minify:   true
             minifier: packer
@@ -53,12 +62,41 @@ The files merged can be minify.
                 fast_decode:   true
                 special_chars: false
 
-By default, the minifier for your stylesheets is Basic. There are no other minifier available for your stylesheets.
-By default, the minifier for your javascripts is JSMin. There are also minifier packer who takes the above options.
-Packer available options:
-  encoding: None, Numeric, Normal, High ASCII
-  fast_decode: Boolean
-  special_chars: Boolean
+##### Stylesheets
+
+Minifier:
+
+  Basic: Not available option
+
+  CSSMin:
+
+    remove-empty-blocks:     Boolean
+
+    remove-empty-rulesets:   Boolean
+
+    remove-last-semicolons:  Boolean
+
+    convert-css3-properties: Boolean
+
+    convert-color-values:    Boolean
+
+    compress-color-values:   Boolean
+
+    compress-unit-values:    Boolean
+
+    emulate-css3-variables:  Boolean
+
+##### Javascripts
+
+  JSMin: Not available option
+
+  Packer:
+
+    encoding:      None, Numeric, Normal, High ASCII
+
+    fast_decode:   Boolean
+
+    special_chars: Boolean
 
 ## Use
 
