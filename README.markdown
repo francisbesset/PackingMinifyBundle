@@ -66,7 +66,7 @@ The files merged can be minify.
 
 #### Stylesheets
 
-* **Basic**: Not available option (minifier by default)  
+* **Basic**: No option available (minifier by default)  
 * **CSSMin**:  
  remove-empty-blocks:     Boolean  
  remove-empty-rulesets:   Boolean  
@@ -79,7 +79,7 @@ The files merged can be minify.
 
 #### Javascripts
 
-* **JSMin**: Not available option (minifier by default)  
+* **JSMin**: No option available (minifier by default)  
 * **Packer**:  
  encoding:      None, Numeric, Normal, High ASCII  
  fast_decode:   Boolean  
