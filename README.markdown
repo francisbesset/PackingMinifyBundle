@@ -31,17 +31,23 @@ The files merged can be minify.
         resource: PackingMinifyBundle/Resources/config/routing/packing_minify.xml
         prefix:   /_pm
 
-#### Add config
+#### Update config
 
+##### Add
     // app/config/config.yml
-    packingMinify.config:
+    packing_minify.config:
         css: { minify: true }
         js:  { minify: true }
+
+##### Delete
+    // app/config/config.yml
+    imports:
+        - { resource: CompatAssetsBundle/Resources/config/assets.xml }
 
 #### Advanced config
 
     // app/config/config.yml
-    packingMinify.config:
+    packing_minify.config:
         css:
             minify:   true
             minifier: cssmin
