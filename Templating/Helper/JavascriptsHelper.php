@@ -2,7 +2,7 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
-use Symfony\Component\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
+use Symfony\Bundle\CompatAssetsBundle\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
 use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 

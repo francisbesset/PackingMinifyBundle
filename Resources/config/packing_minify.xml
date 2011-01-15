@@ -69,5 +69,10 @@
         <service id="templating.minifier.javascripts" alias="templating.minifier.javascripts.jsmin" />
 
         <service id="templating.minifier.stylesheets" alias="templating.minifier.stylesheets.basic" />
+
+        <service id="twig.extension.assets" class="Symfony\Bundle\CompatAssetsBundle\Twig\Extension\AssetsExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
     </services>
 </container>

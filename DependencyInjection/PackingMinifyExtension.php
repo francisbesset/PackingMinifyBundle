@@ -93,6 +93,6 @@ class PackingMinifyExtension extends Extension
      */
     public function getAlias()
     {
-        return 'packingMinify';
+        return 'packing_minify';
     }
 }

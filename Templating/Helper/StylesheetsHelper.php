@@ -2,7 +2,7 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
-use Symfony\Component\Templating\Helper\StylesheetsHelper as BaseStylesheetsHelper;
+use Symfony\Bundle\CompatAssetsBundle\Templating\Helper\StylesheetsHelper as BaseStylesheetsHelper;
 use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
