@@ -28,7 +28,7 @@ The files merged can be minify.
 
     // app/config/routing.yml
     _packing_minify:
-        resource: PackingMinifyBundle/Resources/config/routing/packing_minify.xml
+        resource: @PackingMinifyBundle/Resources/config/routing/packing_minify.xml
         prefix:   /_pm
 
 #### Update config
@@ -42,7 +42,7 @@ The files merged can be minify.
 ##### Delete
     // app/config/config.yml
     imports:
-        - { resource: CompatAssetsBundle/Resources/config/assets.xml }
+        - { resource: @CompatAssetsBundle/Resources/config/assets.xml }
 
 #### Advanced config
 

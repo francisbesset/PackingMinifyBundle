@@ -14,9 +14,11 @@ class PackingMinifyExtension extends Extension
      * @param array            $config    An array of configuration settings
      * @param ContainerBuilder $container A ContainerBuilder instance
      */
-    public function configLoad($config, ContainerBuilder $container)
+    public function configLoad($configs, ContainerBuilder $container)
     {
-        $this->registerMergeConfiguration($config, $container);
+        foreach ($configs as $config) {
+            $this->registerMergeConfiguration($config, $container);
+        }
     }
 
     protected function registerMergeConfiguration($config, $container)
