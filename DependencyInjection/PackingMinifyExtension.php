@@ -5,6 +5,7 @@ namespace Bundle\PackingMinifyBundle\DependencyInjection;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\FileLocator;
 
 class PackingMinifyExtension extends Extension
 {
@@ -23,7 +24,7 @@ class PackingMinifyExtension extends Extension
 
     protected function registerMergeConfiguration($config, $container)
     {
-        $loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (!$container->hasDefinition('packing_minify')) {
             $loader->load('packing_minify.xml');
