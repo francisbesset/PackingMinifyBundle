@@ -5,7 +5,7 @@ namespace Bundle\PackingMinifyBundle\DependencyInjection;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\Loader\FileLocator;
+use Symfony\Component\Config\FileLocator;
 
 class PackingMinifyExtension extends Extension
 {
@@ -15,7 +15,7 @@ class PackingMinifyExtension extends Extension
      * @param array            $config    An array of configuration settings
      * @param ContainerBuilder $container A ContainerBuilder instance
      */
-    public function configLoad($configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
         foreach ($configs as $config) {
             $this->registerMergeConfiguration($config, $container);
@@ -65,26 +65,6 @@ class PackingMinifyExtension extends Extension
         } else {
             $container->setParameter('templating.minifier.stylesheets.'.$config['css']['minifier'].'.options', array());
         }
-    }
-
-    /**
-     * Returns the base path for the XSD files.
-     *
-     * @return string The XSD base path
-     */
-    public function getXsdValidationBasePath()
-    {
-        return __DIR__.'/../Resources/config/schema';
-    }
-
-    /**
-     * Returns the namespace to be used for this extension (XML namespace).
-     *
-     * @return string The XML namespace
-     */
-    public function getNamespace()
-    {
-        return 'http://www.apercite.fr/schema/dic/PackingMinifyBundle';
     }
 
     /**
