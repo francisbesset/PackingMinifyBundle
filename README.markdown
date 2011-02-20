@@ -110,7 +110,7 @@ To use PackingMinifyBundle, call the classic method to add a stylesheet or javas
     <?php $view['javascripts']->add('js/jquery/jquery.js') ?>
     <?php $view['javascripts']->add('js/main.js') ?>
     <?php $view['stylesheets']->add('css/main.css') ?>
-    <?php $view['stylesheets']->add('css/form.css' ?>
+    <?php $view['stylesheets']->add('css/form.css') ?>
     
     <?php echo $view['javascripts'] ?>
     <?php echo $view['stylesheets'] ?>
