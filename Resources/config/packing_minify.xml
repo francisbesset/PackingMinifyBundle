@@ -15,6 +15,7 @@
         <parameter key="templating.helper.assets.class">Bundle\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
         <parameter key="templating.options.stylesheets_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\StylesheetsDumper</parameter>
         <parameter key="templating.options.javascripts_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\JavascriptsDumper</parameter>
+        <parameter key="packing_minify.twig.extension.assets.class">Bundle\PackingMinifyBundle\Twig\Extension\AssetsExtension</parameter>
     </parameters>
 
     <services>
@@ -70,7 +71,7 @@
 
         <service id="templating.minifier.stylesheets" alias="templating.minifier.stylesheets.basic" />
 
-        <service id="twig.extension.assets" class="Symfony\Bundle\CompatAssetsBundle\Twig\Extension\AssetsExtension">
+        <service id="twig.extension.assets" class="%packing_minify.twig.extension.assets.class%">
             <tag name="twig.extension" />
             <argument type="service" id="service_container" />
         </service>

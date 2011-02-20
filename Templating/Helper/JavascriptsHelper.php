@@ -2,7 +2,6 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
-use Symfony\Bundle\CompatAssetsBundle\Templating\Helper\JavascriptsHelper as BaseJavascriptsHelper;
 use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
@@ -24,10 +23,10 @@ class JavascriptsHelper extends BaseJavascriptsHelper
         parent::__construct($assetHelper);
 
         $this->options = array(
-            'cache_dir'      => null,
-            'debug'          => false,
-            'minify'         => false,
-            'dumper_class'   => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\JavascriptsDumper',
+            'cache_dir'    => null,
+            'debug'        => false,
+            'minify'       => false,
+            'dumper_class' => 'Bundle\\PackingMinifyBundle\\Templating\\Dumper\\JavascriptsDumper',
         );
 
         // check option names
@@ -77,8 +76,8 @@ class JavascriptsHelper extends BaseJavascriptsHelper
 
             if ($this->needsReload($md5)) {
                 $dumper = new $this->options['dumper_class']($this->javascripts, array(
-                    'web_dir'           => $this->assetHelper->getWebPath(),
-                    'script_name_uri'   => $this->assetHelper->isScriptNameInUri()
+                    'web_dir'         => $this->assetHelper->getWebPath(),
+                    'script_name_uri' => $this->assetHelper->isScriptNameInUri()
                 ));
 
                 $dump = $dumper->dump();
@@ -92,7 +91,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
 
             $this->reset();
             $html .= $this->getHtml($this->assetHelper->generate('_pm_get', array(
-                'file' => $md5,
+                'file'    => $md5,
                 '_format' => 'js',
             )));
         }

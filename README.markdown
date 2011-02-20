@@ -39,11 +39,6 @@ The files merged can be minify.
         css: { minify: true }
         js:  { minify: true }
 
-##### Delete
-    // app/config/config.yml
-    imports:
-        - { resource: @CompatAssetsBundle/Resources/config/assets.xml }
-
 #### Advanced config
 
     // app/config/config.yml
