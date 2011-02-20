@@ -2,11 +2,18 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
+use Symfony\Component\Templating\Helper\Helper;
 use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
-class StylesheetsHelper extends BaseStylesheetsHelper
+/**
+ * @author Fabien Potencier <fabien.potencier@symfony-project.com>
+ * @author Francis Besset   <http://www.github.com/francisbesset/>
+ */
+class StylesheetsHelper extends Helper
 {
+    protected $stylesheets = array();
+    protected $assetHelper;
     protected $minifier;
     protected $options;
     protected $resources = array();
@@ -20,7 +27,7 @@ class StylesheetsHelper extends BaseStylesheetsHelper
      */
     public function __construct(AssetsHelper $assetHelper, MinifierInterface $minifier, array $options = array())
     {
-        parent::__construct($assetHelper);
+        $this->assetHelper = $assetHelper;
 
         $this->options = array(
             'cache_dir'      => null,
@@ -49,6 +56,16 @@ class StylesheetsHelper extends BaseStylesheetsHelper
     public function add($stylesheet, $attributes = array())
     {
         $this->stylesheets[$stylesheet] = $attributes;
+    }
+
+    /**
+     * Returns all stylesheet files.
+     *
+     * @return array An array of stylesheet files to include
+     */
+    public function get()
+    {
+        return $this->stylesheets;
     }
 
     /**
@@ -116,6 +133,26 @@ class StylesheetsHelper extends BaseStylesheetsHelper
         if (!is_dir($cache.DIRECTORY_SEPARATOR.'js')) {
             mkdir($cache.DIRECTORY_SEPARATOR.'js');
         }
+    }
+
+    /**
+     * Returns the canonical name of this helper.
+     *
+     * @return string The canonical name
+     */
+    public function getName()
+    {
+        return 'stylesheets';
+    }
+
+    /**
+     * Returns a string representation of this helper as HTML.
+     *
+     * @return string The HTML representation of the stylesheets
+     */
+    public function __toString()
+    {
+        return $this->render();
     }
 
     protected function getHtml($path, array $attributes = array())

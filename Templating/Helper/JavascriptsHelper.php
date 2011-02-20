@@ -2,11 +2,18 @@
 
 namespace Bundle\PackingMinifyBundle\Templating\Helper;
 
+use Symfony\Component\Templating\Helper\Helper;
 use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
 use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
 
-class JavascriptsHelper extends BaseJavascriptsHelper
+/**
+ * @author Fabien Potencier <fabien.potencier@symfony-project.com>
+ * @author Francis Besset   <http://www.github.com/francisbesset/>
+ */
+class JavascriptsHelper extends Helper
 {
+    protected $javascripts = array();
+    protected $assetHelper;
     protected $minifier;
     protected $options;
     protected $resources = array();
@@ -20,7 +27,7 @@ class JavascriptsHelper extends BaseJavascriptsHelper
      */
     public function __construct(AssetsHelper $assetHelper, Minifier $minifier, array $options = array())
     {
-        parent::__construct($assetHelper);
+        $this->assetHelper = $assetHelper;
 
         $this->options = array(
             'cache_dir'    => null,
@@ -49,6 +56,16 @@ class JavascriptsHelper extends BaseJavascriptsHelper
     public function add($javascript, $attributes = array())
     {
         $this->javascripts[$javascript] = $attributes;
+    }
+
+    /**
+     * Returns all JavaScript files.
+     *
+     * @return array An array of JavaScript files to include
+     */
+    public function get()
+    {
+        return $this->javascripts;
     }
 
     /**
@@ -118,7 +135,27 @@ class JavascriptsHelper extends BaseJavascriptsHelper
         }
     }
 
-    public function getHtml($path, array $attributes = array())
+    /**
+     * Returns a string representation of this helper as HTML.
+     *
+     * @return string The HTML representation of the JavaScripts
+     */
+    public function __toString()
+    {
+        return $this->render();
+    }
+
+    /**
+     * Returns the canonical name of this helper.
+     *
+     * @return string The canonical name
+     */
+    public function getName()
+    {
+        return 'javascripts';
+    }
+
+    protected function getHtml($path, array $attributes = array())
     {
         $atts = '';
         foreach ($attributes as $key => $value) {
