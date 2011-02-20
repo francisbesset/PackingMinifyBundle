@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Dumper;
+namespace BeSimple\PackingMinifyBundle\Templating\Dumper;
 
 class StylesheetsDumper
 {

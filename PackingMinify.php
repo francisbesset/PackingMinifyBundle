@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle;
+namespace BeSimple\PackingMinifyBundle;
 
 class PackingMinify
 {

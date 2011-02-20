@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets;
+namespace BeSimple\PackingMinifyBundle\Templating\Minifier\Stylesheets;
 
-use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
+use BeSimple\PackingMinifyBundle\Templating\Minifier\Minifier;
 
 class Basic extends Minifier
 {

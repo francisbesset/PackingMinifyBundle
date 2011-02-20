@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Resource;
+namespace BeSimple\PackingMinifyBundle\Templating\Resource;
 
 /*
  * This file is part of the Symfony framework.

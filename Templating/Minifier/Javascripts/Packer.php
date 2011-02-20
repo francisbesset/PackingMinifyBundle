@@ -1,8 +1,8 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts;
+namespace BeSimple\PackingMinifyBundle\Templating\Minifier\Javascripts;
 
-use Bundle\PackingMinifyBundle\Templating\Minifier\Minifier;
+use BeSimple\PackingMinifyBundle\Templating\Minifier\Minifier;
 
 class Packer extends Minifier
 {

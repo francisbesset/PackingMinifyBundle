@@ -5,17 +5,17 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/dic/services http://www.symfony-project.org/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="packing_minify">Bundle\PackingMinifyBundle\PackingMinify</parameter>
-        <parameter key="templating.helper.javascripts.class">Bundle\PackingMinifyBundle\Templating\Helper\JavascriptsHelper</parameter>
-        <parameter key="templating.helper.stylesheets.class">Bundle\PackingMinifyBundle\Templating\Helper\StylesheetsHelper</parameter>
-        <parameter key="templating.minifier.stylesheets.basic.class">Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets\Basic</parameter>
-        <parameter key="templating.minifier.stylesheets.cssmin.class">Bundle\PackingMinifyBundle\Templating\Minifier\Stylesheets\CSSMin</parameter>
-        <parameter key="templating.minifier.javascripts.jsmin.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\JSMin</parameter>
-        <parameter key="templating.minifier.javascripts.packer.class">Bundle\PackingMinifyBundle\Templating\Minifier\Javascripts\Packer</parameter>
-        <parameter key="templating.helper.assets.class">Bundle\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
-        <parameter key="templating.options.stylesheets_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\StylesheetsDumper</parameter>
-        <parameter key="templating.options.javascripts_dumper_class">Bundle\PackingMinifyBundle\Templating\Dumper\JavascriptsDumper</parameter>
-        <parameter key="packing_minify.twig.extension.assets.class">Bundle\PackingMinifyBundle\Twig\Extension\AssetsExtension</parameter>
+        <parameter key="packing_minify">BeSimple\PackingMinifyBundle\PackingMinify</parameter>
+        <parameter key="templating.helper.javascripts.class">BeSimple\PackingMinifyBundle\Templating\Helper\JavascriptsHelper</parameter>
+        <parameter key="templating.helper.stylesheets.class">BeSimple\PackingMinifyBundle\Templating\Helper\StylesheetsHelper</parameter>
+        <parameter key="templating.minifier.stylesheets.basic.class">BeSimple\PackingMinifyBundle\Templating\Minifier\Stylesheets\Basic</parameter>
+        <parameter key="templating.minifier.stylesheets.cssmin.class">BeSimple\PackingMinifyBundle\Templating\Minifier\Stylesheets\CSSMin</parameter>
+        <parameter key="templating.minifier.javascripts.jsmin.class">BeSimple\PackingMinifyBundle\Templating\Minifier\Javascripts\JSMin</parameter>
+        <parameter key="templating.minifier.javascripts.packer.class">BeSimple\PackingMinifyBundle\Templating\Minifier\Javascripts\Packer</parameter>
+        <parameter key="templating.helper.assets.class">BeSimple\PackingMinifyBundle\Templating\Helper\AssetsHelper</parameter>
+        <parameter key="templating.options.stylesheets_dumper_class">BeSimple\PackingMinifyBundle\Templating\Dumper\StylesheetsDumper</parameter>
+        <parameter key="templating.options.javascripts_dumper_class">BeSimple\PackingMinifyBundle\Templating\Dumper\JavascriptsDumper</parameter>
+        <parameter key="packing_minify.twig.extension.assets.class">BeSimple\PackingMinifyBundle\Twig\Extension\AssetsExtension</parameter>
     </parameters>
 
     <services>

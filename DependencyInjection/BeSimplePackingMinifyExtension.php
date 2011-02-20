@@ -1,13 +1,13 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\DependencyInjection;
+namespace BeSimple\PackingMinifyBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-class PackingMinifyExtension extends Extension
+class BeSimplePackingMinifyExtension extends Extension
 {
     /**
      * Loads the PackingMinify configuration.
@@ -76,6 +76,6 @@ class PackingMinifyExtension extends Extension
      */
     public function getAlias()
     {
-        return 'packing_minify';
+        return 'be_simple_packing_minify';
     }
 }

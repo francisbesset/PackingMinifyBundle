@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Controller;
+namespace BeSimple\PackingMinifyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

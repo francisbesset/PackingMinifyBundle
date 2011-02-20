@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Bundle\PackingMinifyBundle\Twig\Node;
+namespace BeSimple\PackingMinifyBundle\Twig\Node;
 
 /**
  * Represents a stylesheets node.

@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.symfony-project.org/schema/routing http://www.symfony-project.org/schema/routing/routing-1.0.xsd">
 
     <route id="_pm_get" pattern="/{file}.{_format}">
-        <default key="_controller">PackingMinifyBundle:PackingMinify:get</default>
+        <default key="_controller">BeSimplePackingMinifyBundle:PackingMinify:get</default>
         <requirement key="_format">(css|js)</requirement>
     </route>
 </routes>

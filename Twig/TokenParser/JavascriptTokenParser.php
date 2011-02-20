@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Bundle\PackingMinifyBundle\Twig\TokenParser;
+namespace BeSimple\PackingMinifyBundle\Twig\TokenParser;
 
-use Bundle\PackingMinifyBundle\Twig\Node\JavascriptNode;
+use BeSimple\PackingMinifyBundle\Twig\Node\JavascriptNode;
 
 /**
  * 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Helper;
+namespace BeSimple\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper as BaseAssetsHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\RouterHelper;

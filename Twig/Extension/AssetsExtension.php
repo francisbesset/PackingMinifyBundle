@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Bundle\PackingMinifyBundle\Twig\Extension;
+namespace BeSimple\PackingMinifyBundle\Twig\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Bundle\PackingMinifyBundle\Twig\TokenParser\StylesheetTokenParser;
-use Bundle\PackingMinifyBundle\Twig\TokenParser\StylesheetsTokenParser;
-use Bundle\PackingMinifyBundle\Twig\TokenParser\JavascriptTokenParser;
-use Bundle\PackingMinifyBundle\Twig\TokenParser\JavascriptsTokenParser;
+use BeSimple\PackingMinifyBundle\Twig\TokenParser\StylesheetTokenParser;
+use BeSimple\PackingMinifyBundle\Twig\TokenParser\StylesheetsTokenParser;
+use BeSimple\PackingMinifyBundle\Twig\TokenParser\JavascriptTokenParser;
+use BeSimple\PackingMinifyBundle\Twig\TokenParser\JavascriptsTokenParser;
 
 /**
  *

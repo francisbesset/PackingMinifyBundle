@@ -1,5 +1,5 @@
-PackingMinifyBundle, Enhanced Stylesheets and Javascripts for Symfony2
-=================================================================
+PackingMinifyBundle: Enhanced Stylesheets and Javascripts for Symfony2
+======================================================================
 
 PackingMinifyBundle merge your stylesheets files and javascripts files.
 The files merged can be minify.
@@ -8,7 +8,7 @@ The files merged can be minify.
 
 ### Add PackingMinifyBundle to your src/Bundle dir
 
-    git submodule add git://github.com/francisbesset/PackingMinifyBundle.git src/Bundle/PackingMinifyBundle
+    git submodule add git://github.com/francisbesset/PackingMinifyBundle.git src/BeSimple/PackingMinifyBundle
 
 ### Add PackingMinifyBundle to your application kernel
 
@@ -17,10 +17,18 @@ The files merged can be minify.
     {
         return array(
             // ...
-            new Bundle\PackingMinifyBundle\PackingMinifyBundle(),
+            new BeSimple\PackingMinifyBundle\BeSimplePackingMinifyBundle(),
             // ...
         );
     }
+
+### Register the BeSimple namespace
+
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        'BeSimple' => __DIR__.'/../src',
+        // your other namespaces
+    ));
 
 ### Update your config
 
@@ -28,21 +36,21 @@ The files merged can be minify.
 
     // app/config/routing.yml
     _packing_minify:
-        resource: @PackingMinifyBundle/Resources/config/routing/packing_minify.xml
+        resource: @BeSimplePackingMinifyBundle/Resources/config/routing/packing_minify.xml
         prefix:   /_pm
 
 #### Update config
 
 ##### Add
     // app/config/config.yml
-    packing_minify.config:
+    be_simple_packing_minify.config:
         css: { minify: true }
         js:  { minify: true }
 
 #### Advanced config
 
     // app/config/config.yml
-    packing_minify.config:
+    be_simple_packing_minify.config:
         css:
             minify:   true
             minifier: cssmin
@@ -86,9 +94,7 @@ The files merged can be minify.
  fast_decode:   Boolean  
  special_chars: Boolean
 
-## Use
-
-To use PackingMinifyBundle, call the classic method to add a stylesheet or javascript.
+## Using
 
 ### Twig
 

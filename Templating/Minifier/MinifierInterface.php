@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Minifier;
+namespace BeSimple\PackingMinifyBundle\Templating\Minifier;
 
 interface MinifierInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Bundle\PackingMinifyBundle\Templating\Helper;
+namespace BeSimple\PackingMinifyBundle\Templating\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Bundle\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
-use Bundle\PackingMinifyBundle\Templating\Resource\FileResource;
+use BeSimple\PackingMinifyBundle\Templating\Minifier\MinifierInterface;
+use BeSimple\PackingMinifyBundle\Templating\Resource\FileResource;
 
 /**
  * @author Fabien Potencier <fabien.potencier@symfony-project.com>
