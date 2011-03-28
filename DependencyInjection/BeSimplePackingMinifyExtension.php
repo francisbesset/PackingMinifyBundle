@@ -66,16 +66,4 @@ class BeSimplePackingMinifyExtension extends Extension
             $container->setParameter('templating.minifier.stylesheets.'.$config['css']['minifier'].'.options', array());
         }
     }
-
-    /**
-     * Returns the recommended alias to use in XML.
-     *
-     * This alias is also the mandatory prefix to use when using YAML.
-     *
-     * @return string The alias
-     */
-    public function getAlias()
-    {
-        return 'be_simple_packing_minify';
-    }
 }
