@@ -36,7 +36,7 @@ The files merged can be minify.
 
     // app/config/routing.yml
     _packing_minify:
-        resource: @BeSimplePackingMinifyBundle/Resources/config/routing/packing_minify.xml
+        resource: @BeSimplePackingMinify/Resources/config/routing/packing_minify.xml
         prefix:   /_pm
 
 #### Update config
