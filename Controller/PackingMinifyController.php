@@ -4,6 +4,7 @@ namespace BeSimple\PackingMinifyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PackingMinifyController extends Controller
 {
@@ -19,6 +20,6 @@ class PackingMinifyController extends Controller
             }
         }
 
-        return new Response('', 404);
+        throw new NotFoundHttpException('Is not a XML Http Request');
     }
 }
