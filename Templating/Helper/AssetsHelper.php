@@ -19,9 +19,9 @@ class AssetsHelper extends BaseAssetsHelper
      * @param string|array $baseURLs The domain URL or an array of domain URLs
      * @param string       $version  The version
      */
-    public function __construct(Request $request, RouterHelper $routerHelper, $baseURLs = array(), $version = null)
+    public function __construct(Request $request, RouterHelper $routerHelper, $baseURLs = array(), $version = null, $packages = array())
     {
-        parent::__construct($request, $baseURLs, $version);
+        parent::__construct($request, $baseURLs, $version, $packages);
 
         if (preg_match('#'.preg_quote($request->server->get('SCRIPT_NAME')).'#', $request->server->get('REQUEST_URI'))) {
             $this->script = true;
