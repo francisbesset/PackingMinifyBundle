@@ -53,9 +53,11 @@ class StylesheetsHelper extends Helper
      * @param string $stylesheet A stylesheet file path
      * @param array  $attributes An array of attributes
      */
-    public function add($stylesheet, $attributes = array())
+    public function add($stylesheets, $attributes = array())
     {
-        $this->stylesheets[$stylesheet] = $attributes;
+        foreach ($stylesheets as $stylesheet) {
+            $this->stylesheets[$stylesheet] = $attributes;
+        }
     }
 
     /**

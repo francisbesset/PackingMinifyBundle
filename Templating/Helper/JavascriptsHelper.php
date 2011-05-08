@@ -53,9 +53,11 @@ class JavascriptsHelper extends Helper
      * @param string $javascript A javascript file path
      * @param array  $attributes An array of attributes
      */
-    public function add($javascript, $attributes = array())
+    public function add(array $javascripts, $attributes = array())
     {
-        $this->javascripts[$javascript] = $attributes;
+        foreach ($javascripts as $javascript) {
+            $this->javascripts[$javascript] = $attributes;
+        }
     }
 
     /**

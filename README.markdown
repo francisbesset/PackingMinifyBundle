@@ -98,20 +98,8 @@ The files merged can be minify.
 
 ### Twig
 
-    {% javascript 'js/jquery/jquery.js' %}
-    {% javascript 'js/main.js' %}
-    {% stylesheet 'css/main.css' %}
-    {% stylesheet 'css/form.css' %}
+    {{ javascript(['js/jquery/jquery.js', 'js/main.js'] }}
+    {{ stylesheet(['css/main.css', 'css/form.css') }}
     
-    {% javascripts %}
-    {% stylesheets %}
-
-### PHP
-
-    <?php $view['javascripts']->add('js/jquery/jquery.js') ?>
-    <?php $view['javascripts']->add('js/main.js') ?>
-    <?php $view['stylesheets']->add('css/main.css') ?>
-    <?php $view['stylesheets']->add('css/form.css') ?>
-    
-    <?php echo $view['javascripts'] ?>
-    <?php echo $view['stylesheets'] ?>
+    {{ javascripts }}
+    {{ stylesheets }}

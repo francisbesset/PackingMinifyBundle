@@ -30,36 +30,42 @@ class AssetsExtension extends \Twig_Extension
         $this->container = $container;
     }
 
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
-    public function getTemplating()
-    {
-        return $this->container->get('templating.engine');
-    }
-
-    /**
-     * Returns the token parser instance to add to the existing list.
-     *
-     * @return array An array of Twig_TokenParser instances
-     */
-    public function getTokenParsers()
+    public function getFunctions()
     {
         return array(
-            // {% javascript 'bundles/blog/js/blog.js' %}
-            new JavascriptTokenParser(),
-
-            // {% javascripts %}
-            new JavascriptsTokenParser(),
-
-            // {% stylesheet 'bundles/blog/css/blog.css' with { 'media': 'screen' } %}
-            new StylesheetTokenParser(),
-
-            // {% stylesheets %}
-            new StylesheetsTokenParser(),
+            'stylesheet'  => new \Twig_Function_Method($this, 'addStylesheet'),
+            'stylesheets' => new \Twig_Function_Method($this, 'renderStylesheet', array('is_safe' => array('html'))),
+            'javascript'  => new \Twig_Function_Method($this, 'addJavascript'),
+            'javascripts' => new \Twig_Function_Method($this, 'renderJavascript', array('is_safe' => array('html'))),
         );
+    }
+
+    public function addStylesheet($stylesheets)
+    {
+        if (!is_array($stylesheets)) {
+            $stylesheets = array($stylesheets);
+        }
+
+        $this->container->get('templating.helper.stylesheets')->add($stylesheets);
+    }
+
+    public function renderStylesheet()
+    {
+        return $this->container->get('templating.helper.stylesheets')->render();
+    }
+
+    public function addJavascript($javascripts)
+    {
+        if (!is_array($javascripts)) {
+            $javascripts = array($javascripts);
+        }
+
+        $this->container->get('templating.helper.javascripts')->add($javascripts);
+    }
+
+    public function renderJavascript()
+    {
+        return $this->container->get('templating.helper.javascripts')->render();
     }
 
     /**
